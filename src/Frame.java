@@ -75,7 +75,7 @@ public class Frame extends JFrame {
          */
         JPanel telaMenu = PainelMenu(); ///menu principal
         JPanel telaBibliotecaCriar = CriarBiblioteca(); ///criar biblioteca
-        //JPanel telaBibliotecaEntrar = EntrarBilioteca(); ///entrar biblioteca
+        JPanel telaBibliotecaEntrar = EntrarBilioteca(); ///entrar biblioteca
 
         //Menu gerenciaLivro
         JPanel telaCriarLivro = AdicionarLivro(); ///adiciona livro
@@ -84,7 +84,7 @@ public class Frame extends JFrame {
         //ADICIONA AS TELAS
         painelCentral.add(telaMenu, "Menu"); ///menu principal
         painelCentral.add(telaBibliotecaCriar, "criarBiblioteca");
-        //painelCentral.add(telaBibliotecaEntrar, "entrarBiblioteca");
+        painelCentral.add(telaBibliotecaEntrar, "entrarBiblioteca");
 
 
         //Menu gerenciaLivro
@@ -95,7 +95,7 @@ public class Frame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                cardLayout.show(painelCentral, "criarLivro"); // Garante que o menu apareça inicialmente
+                cardLayout.show(painelCentral, "Menu"); // Garante que o menu apareça inicialmente
             }
         });
 
@@ -104,6 +104,7 @@ public class Frame extends JFrame {
 
 
     }
+
 
 
     /**
@@ -121,7 +122,6 @@ public class Frame extends JFrame {
         /**
          * Adiciona os botões no menu
          */
-
         //espaço antes do primeiro botao
         painelMenu.add(espaco(0, 50));
 
@@ -144,6 +144,7 @@ public class Frame extends JFrame {
         botaoEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 cardLayout.show(painelCentral, "entrarBiblioteca");
             }
         });
@@ -156,13 +157,14 @@ public class Frame extends JFrame {
         painelMenu.add(criarBotaoFormatado("Excluir uma biblioteca"));
 
 
-        painelMenu.setVisible(true);
+
         this.add(painelMenu, BorderLayout.CENTER);//add o titulo na tela principal
 
 
         return painelMenu;
 
     }
+
 
     /**
      * BOTÃO DE CRIAR BIBLIOTECA
@@ -208,6 +210,8 @@ public class Frame extends JFrame {
             }
         });
 
+
+
         /**
          * B O T A O DE C A N C E L A R
          */
@@ -227,11 +231,14 @@ public class Frame extends JFrame {
         painelBiblioteca.add(Box.createRigidArea(new Dimension(0, 10)));  // Espaço entre os botões
         painelBiblioteca.add(botaoCancelar);
 
-        painelBiblioteca.setVisible(true);
 
         return painelBiblioteca;  // Retorna o painel pronto
     }
 
+
+    /**
+     *BOTÃO DE ENTRAR NA BIBLIOTECA
+     */
 
     private JPanel EntrarBilioteca() {
 
@@ -282,12 +289,33 @@ public class Frame extends JFrame {
         //entrarBiblioteca.add(botaoConfirmar);
         entrarBiblioteca.add(botaoCancelar, BorderLayout.SOUTH);
 
-        entrarBiblioteca.setVisible(true);
 
 
         return entrarBiblioteca;
     }
 
+
+    /**
+     * SUBMENU da biblioteca
+     */
+    private JPanel MenuLivro() {
+
+        JPanel menuLivro = new JPanel();
+        menuLivro.setBackground(new Color(34, 34, 34));
+        menuLivro.setLayout(new BorderLayout());
+
+        return menuLivro;
+    }
+
+
+
+
+
+
+
+    /**
+     * Parte submenu adicionar livro
+     */
     private JPanel AdicionarLivro() {
 
 
@@ -327,8 +355,6 @@ public class Frame extends JFrame {
         // Adiciona o painel à janela
         add(painel, BorderLayout.CENTER);
 
-        // Tornar visível
-        setVisible(true);
 
         return painel;
     }
